@@ -1,0 +1,179 @@
+body{
+	
+	font:15px/1.5 Tibetan Machine Uni, sans-serif;
+	padding:0;
+	margin:0;
+	background-color:  #f4f4f4;
+}
+.container{
+	width: 90%;
+	margin-right: 25px;
+	overflow: hidden;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+header {
+background: #35424a;
+color:white ;
+padding-top: 30px;
+min-height: 70px;
+border-bottom: orange 3px solid;
+}
+header span{
+	color: #d56d54;
+}
+section .container1{
+	width: 100%;
+	margin :0;
+	color: #45e4e4;
+	font-size: 14pt;
+	overflow: hidden;
+	background-color: #344870;
+}
+section ul{
+	color: #7b0c44;
+    font-size: 12pt;
+	margin: 25px;
+	
+}
+header .container{
+	width: 100%;
+	margin-right: 30px;
+	overflow: hidden;
+}
+header a{
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+header #branding{
+	float: left;
+}
+header #branding h1{
+	margin: 0;
+	padding-left: 25px;
+}
+header nav{
+	float: right;
+	margin-top: 10px;
+	margin-bottom: 6px;
+	padding-right: 20px;
+}
+header .current a{
+	color: #e8491d;
+	font-weight: bold;
+}
+.current{
+	color: #e8491d;
+	font-weight: bold;
+}
+#branding .highlight{
+	color: #e8491d;
+	font-weight: bold;
+}
+#showcase{
+	min-height: 450px;
+	background: url('../img/showcase.jpeg') no-repeat 	;
+	background-size: 100% 100%;
+    text-align: center;
+    border-bottom: orange 3px solid;
+}
+#showcase h2{
+	margin-top: 35px;
+	font-size: 35px;
+	margin-bottom: 25%;
+    color: #8411c3;
+}
+#showcase p{
+	margin-top: 15px;
+	margin-left: 30px;
+	text-align: left;
+	font-size: 17px;
+	color: white;
+}
+#showcase .container1{
+	width: 90%;
+	margin-right: 25px;
+	overflow: hidden;
+}
+#showcase img{
+	transform: rotate(90deg);
+	width: auto;
+	height: 140px;
+	float: left;
+	margin-bottom: 15%;
+	margin-top: 15px;
+}
+footer{
+	padding: 1px;
+	color: #e4ebf2;
+	background-color: #14283d; 
+	text-align: center;
+    background-size:  100% 50%;
+	font-family: Century Schoolbook L;
+}
+.container1{
+
+	width: 90%;
+	margin: 0;
+	overflow: hidden;
+}
+#showcase2 {
+	color: #f4c00a;
+	text-align: center;
+	font-size: 15pt;
+    min-height: 550px;
+	background:url('../img/oscars.jpg') no-repeat;
+	background-size: 100% 100%;
+	border-bottom: orange 3px solid;
+	padding-top: 25px;
+}
+#boxes1 h3{
+	text-align: center;
+	font-size: 30pt;
+}
+#boxes1{
+	margin: 0;
+	background-color: #b0c1d5;
+}
+#boxes1 img{
+	margin-top: 30px;
+	height: 360px;
+	width: 240px;
+}
+#boxes1 .box{
+	float: left;
+	text-align: left;
+	width: 30%;
+	padding-left:  30px;
+}
+#boxes .box1{
+	float: left;
+	text-align: left;
+    width: 40%;
+	padding-left:  50px;
+}
+
+@media(max-width: 768px){
+	header #branding,
+	header nav,
+	header nav li,
+	#showcase .container, 
+	#boxes .box1,
+	#boxes1 .box{
+		float: none;
+		text-align: center;
+		width: 90%;
+	}
+	#showcase h2{
+		margin-top: 15px;
+	}
+}
