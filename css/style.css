@@ -118,7 +118,7 @@ footer{
 	color: #e4ebf2;
 	background-color: #14283d; 
 	text-align: center;
-    background-size:  100% 50%;
+    	background-size:  100% auto;
 	font-family: Century Schoolbook L;
 }
 .container1{
