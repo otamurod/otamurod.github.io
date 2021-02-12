@@ -1,12 +1,12 @@
 body{
 	
-	font:12px Tibetan Machine Uni, sans-serif;
+	font:17px Tibetan Machine Uni, sans-serif;
 	padding:0;
 	margin:0;
 	background-color:  #f4f4f4;
 }
 .container{
-	width: 95%;
+	width: 92%;
 	margin-right: 25px;
 	overflow: hidden;
 }
@@ -94,9 +94,9 @@ header .current a{
 }
 #showcase p{
 	margin-top: 15px;
-	margin-left: 30px;
+	margin-left: 33px;
 	text-align: left;
-	font-size: 17px;
+	font-size: 12px;
 	color: white;
 }
 #showcase .container1{
@@ -153,7 +153,7 @@ footer{
 	float: center;
 	text-align: left;
 	width: 25%;
-	padding-left:  5%;
+	padding-left: 32px;
 }
 #boxes .box1{
 	float: left;
