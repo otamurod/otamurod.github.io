@@ -146,7 +146,9 @@ footer{
 	background-color: #b0c1d5;
 }
 #boxes1 img{
+	float: center;
 	margin-top: 30px;
+	margin-left: 10px;
 	height: 360px;
 	width: 240px;
 }
