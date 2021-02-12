@@ -153,10 +153,10 @@ footer{
 	width: 240px;
 }
 #boxes1 .box{
-	float: center;
+	float: left;
 	text-align: left;
 	width: 25%;
-	padding-left: 30px;
+	padding-left: 8%;
 }
 #boxes .box1{
 	float: left;
