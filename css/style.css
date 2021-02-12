@@ -1,12 +1,12 @@
 body{
 	
-	font:15px/1.5 Tibetan Machine Uni, sans-serif;
+	font:12px Tibetan Machine Uni, sans-serif;
 	padding:0;
 	margin:0;
 	background-color:  #f4f4f4;
 }
 .container{
-	width: 90%;
+	width: 95%;
 	margin-right: 25px;
 	overflow: hidden;
 }
@@ -150,10 +150,10 @@ footer{
 	width: 240px;
 }
 #boxes1 .box{
-	float: left;
+	float: center;
 	text-align: left;
 	width: 25%;
-	padding-left:  30px;
+	padding-left:  5%;
 }
 #boxes .box1{
 	float: left;
