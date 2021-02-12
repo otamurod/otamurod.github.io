@@ -109,16 +109,14 @@ header .current a{
 	width: auto;
 	height: 200px;
 	float: left;
-	margin-bottom: 15px;
-	margin-top: 15px;
-	margin-left: 5px;
+	margin: 15px;
 }
 footer{
 	padding: 1px;
 	color: #e4ebf2;
 	background-color: #14283d; 
 	text-align: center;
-    	background-size:  100% auto;
+    	background-size:  100% 20px;
 	font-family: Century Schoolbook L;
 }
 .container1{
