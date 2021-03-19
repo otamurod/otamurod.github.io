@@ -1,181 +1,248 @@
-body{
-	
-	font:17px Tibetan Machine Uni, sans-serif;
-	padding:0;
-	margin:0;
-	background-color:  #f4f4f4;
+body {
+	font: 17px Tibetan Machine Uni, sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: #f4f4f4;
 }
-.container{
+
+.container {
 	width: 92%;
 	margin-right: 25px;
 	overflow: hidden;
 }
-ul{
+
+ul {
 	margin: 0;
 	padding: 0;
 }
+
 header {
-background: #35424a;
-color:white ;
-padding-top: 30px;
-min-height: 70px;
-border-bottom: orange 3px solid;
+	background: #35424a;
+	color: white;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: orange 3px solid;
 }
-header span{
+
+header span {
 	color: #d56d54;
 }
-section .container1{
+
+section .container1 {
 	width: 100%;
-	margin :0;
+	margin: 0;
 	color: #45e4e4;
 	font-size: 14pt;
 	overflow: hidden;
 	background-color: #344870;
 }
-section ul{
+
+section ul {
 	color: #7b0c44;
-    font-size: 12pt;
+	font-size: 12pt;
 	margin: 25px;
-	
 }
-header .container{
+
+header .container {
 	width: 100%;
 	margin-right: 30px;
 	overflow: hidden;
 }
-header a{
+
+header a {
 	color: white;
 	text-decoration: none;
 	text-transform: uppercase;
 	font-size: 16px;
 }
-header li{
+
+header li {
 	float: left;
 	display: inline;
 	padding: 0 20px 0 20px;
 }
-header #branding{
+
+header #branding {
 	float: left;
 }
-header #branding h1{
+
+header #branding h1 {
 	margin: 0;
 	padding-left: 25px;
 }
-header nav{
+
+header nav {
 	float: right;
 	margin-top: 10px;
 	margin-bottom: 6px;
 	padding-right: 20px;
 }
-header .current a{
+
+header .current a {
 	color: #e8491d;
 	font-weight: bold;
 }
-.current{
+
+.current {
 	color: #e8491d;
 	font-weight: bold;
 }
-#branding .highlight{
+
+#branding .highlight {
 	color: #e8491d;
 	font-weight: bold;
 }
-#showcase{
+
+#showcase {
 	min-height: 450px;
-	background: url('../img/showcase.jpeg') no-repeat 	;
+	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
-    text-align: center;
-    border-bottom: orange 3px solid;
+	text-align: center;
+	border-bottom: orange 3px solid;
 }
-#showcase h2{
+
+#showcase h2 {
 	margin-top: 35px;
 	font-size: 35px;
 	margin-bottom: 25%;
-    color: #8411c3;
+	color: #8411c3;
 }
-#showcase p{
+
+#showcase p {
 	margin-top: 15px;
 	margin-left: 33px;
 	text-align: left;
 	font-size: 12px;
 	color: white;
 }
-#showcase .container1{
+
+#showcase .container1 {
 	width: 90%;
 	margin-right: 25px;
 	overflow: hidden;
 }
-#showcase img{
-	
+
+#showcase img {
 	width: auto;
 	height: 200px;
 	float: left;
 	margin: 15px;
 }
-footer{
+
+footer {
 	padding: 1px;
 	color: #e4ebf2;
-	background-color: #14283d; 
+	background-color: #14283d;
 	text-align: center;
-    	background-size:  100% 20px;
+	background-size: 100% 20px;
 	font-family: Century Schoolbook L;
 }
-.container1{
 
+.container1 {
 	width: 90%;
 	margin: 0;
 	overflow: hidden;
 }
+
 #showcase2 {
 	color: #f4c00a;
 	text-align: center;
 	font-size: 15pt;
-    min-height: 550px;
-	background:url('../img/oscars.jpg') no-repeat;
+	min-height: 550px;
+	background: url('../img/oscars.jpg') no-repeat;
 	background-size: 100% 100%;
 	border-bottom: orange 3px solid;
 	padding-top: 25px;
 }
-#boxes1 h3{
+
+#boxes1 h3 {
 	text-align: center;
 	font-size: 30pt;
 }
-#boxes1{
+
+#boxes1 {
 	margin: 0;
 	background-color: #b0c1d5;
 }
-#boxes1 img{
-	float: center;
+
+#boxes1 img {
 	margin-top: 30px;
 	margin-left: 10px;
 	height: 360px;
 	width: 240px;
 }
-#boxes1 .box{
+
+#boxes1 .box {
 	float: left;
 	text-align: left;
 	width: 25%;
 	padding-left: 8%;
 }
-#boxes .box1{
+
+#boxes .box1 {
 	float: left;
 	text-align: left;
-   	width: 40%;
-	padding-left:  50px;
-	
+	width: 40%;
+	padding-left: 50px;
 }
 
-@media(max-width: 768px){
-	header #branding,
-	header nav,
-	header nav li,
-	#showcase .container, 
-	#boxes .box1,
-	#boxes1 .box{
+@media(max-width:768px) {
+	header #branding, header nav, header nav li, #showcase .container, #boxes .box1, #boxes1 .box {
 		float: none;
 		text-align: center;
 		width: 90%;
 	}
-	#showcase h2{
+
+	#showcase h2 {
 		margin-top: 15px;
 	}
+
+}
+
+.welcome {
+	text-align: center;
+	font-size: 24px;
+	color: darkblue;
+	border-top: 3px solid orange;
+	border-bottom: 3px solid orange;
+	background: url('../img/IUT.jpg') no-repeat;
+	background-size: 100% 100%;
+	height: 720px;
+}
+
+.video {
+	border-top: orange 3px solid;
+	border-bottom: orange 3px solid;
+	max-height: 480px;
+	display: flex;
+	justify-content: center;
+	background-color: #b0c1d5;
+}
+
+video {
+	max-width: 480px;
+	height: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#film {
+	border-bottom: 4px orange solid;
+	display: flex;
+	justify-content: space-around;
+	background-color: #0D2D45;
+}
+
+#film video {
+	
+	object-fit: cover;
+	margin: 0;
+}
+
+#film .video {
+	float: left;
+	width: 40%;
+	border: none;
+	margin: 5px;
+	background-color: unset;
 }
