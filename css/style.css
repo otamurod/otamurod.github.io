@@ -211,9 +211,9 @@ footer {
 	background-color: #b0c1d5;
 }
 
-#boxes1 img {
+#boxes1 .box img {
 	margin-top: 40px;
-	margin: 10px;
+	margin: 30px;
 	height: 360px;
 	width: 240px;
 	border-radius: 18px;
@@ -225,7 +225,7 @@ footer {
 	float: left;
 	text-align: left;
 	width: 25%;
-	padding-left: 8%;
+	padding: 4%;
 }
 
 #boxes .box1 {
