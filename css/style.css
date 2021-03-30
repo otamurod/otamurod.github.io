@@ -126,6 +126,7 @@ header .current a {
 	width: 320px;
 	float: left;
 	margin: 25px;
+	margin-left: 0px;
 	margin-top: 0;
 	border-radius: 18px;
 }
