@@ -6,8 +6,7 @@ body {
 }
 
 .container {
-	width: 92%;
-	margin-right: 25px;
+	width: 100%;
 	overflow: hidden;
 }
 
@@ -94,6 +93,7 @@ header .current a {
 }
 
 #showcase {
+	/*min-height: 400px;*/
 	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
@@ -126,23 +126,25 @@ header .current a {
 	width: 320px;
 	float: left;
 	margin: 25px;
-	margin-left: 30px;
 	margin-top: 0;
 	border-radius: 18px;
 }
 
 .content {
 	display: flex;
-	flex-direction: row;
-	
+	margin: auto;
+	max-width: 60%;
+	align-content: space-around;
+
 }
 
 #details {
 	height: 240px;
 	width: 320px;
 	background-color: #b0c1d0;
+	margin: 25px;
+	margin-top: 0;
 	border-radius: 18px;
-	margin-bottom: 25px;
 }
 #details p, pre{
 	margin: 0;
@@ -158,10 +160,12 @@ footer {
 	font-family: Century Schoolbook L;
 }
 
-.container1 {
-	width: 90%;
-	margin: 0;
-	overflow: hidden;
+.content2 {
+	display: flex;
+	margin: auto;
+	max-width: 60%;
+	align-content: space-around;
+
 }
 
 #showcase2 {
@@ -200,10 +204,9 @@ footer {
 }
 
 #boxes .box1 {
-	float: left;
 	text-align: left;
-	width: 40%;
-	padding-left: 50px;
+	width: 320px;
+	margin: 25px;
 }
 
 @media(max-width:768px) {
