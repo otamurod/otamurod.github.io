@@ -94,7 +94,6 @@ header .current a {
 }
 
 #showcase {
-	/*min-height: 400px;*/
 	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
@@ -140,7 +139,7 @@ header .current a {
 
 #details {
 	height: 240px;
-	width: 360px;
+	width: 320px;
 	background-color: #b0c1d0;
 	border-radius: 18px;
 	margin-bottom: 25px;
