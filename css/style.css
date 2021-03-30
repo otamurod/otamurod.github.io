@@ -93,7 +93,7 @@ header .current a {
 }
 
 #showcase {
-	/*min-height: 400px;*/
+	
 	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
@@ -140,6 +140,7 @@ header .current a {
 }
 
 #details {
+	font: 17px Tibetan Machine Uni, sans-serif;
 	height: 240px;
 	width: 320px;
 	background-color: #b0c1d0;
