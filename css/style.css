@@ -129,20 +129,29 @@ header .current a {
 	margin-left: 0px;
 	margin-top: 0;
 	border-radius: 18px;
-	transition: transform .5s ease;
+	/*transition: transform .5s ease;*/
 }
-
-
-#image img{
+.image {
+	height: 240px;
+	width: 320px;
+	overflow: hidden;
+	margin: 0 auto;
+	border-radius: 18px;
+}
+	
+.image img, .box img{
 	transition: transform 2s, filter 1.5s ease-in-out;
-  	transform-origin: center center;
-  	filter: brightness(70%);
+ 	 transform-origin: center center;
+  	filter: brightness(85%);
 }
-#image :hover img{
-	filter: brightness(100%);
-  	transform: scale(1.3);
-}
+	
+.image:hover img, .box:hover img{
+	
+	filter: brightness(115%);
+  	transform: scale(1.2);
 
+	/*transform: scale(1.33);*/
+}
 
 .content {
 	display: flex;
@@ -204,13 +213,16 @@ footer {
 }
 
 #boxes1 img {
-	margin-top: 30px;
+	margin-top: 40px;
 	margin-left: 10px;
 	height: 360px;
 	width: 240px;
+	border-radius: 18px;
 }
 
 #boxes1 .box {
+	overflow: hidden;
+	margin: 0 auto;
 	float: left;
 	text-align: left;
 	width: 25%;
