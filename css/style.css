@@ -93,7 +93,7 @@ header .current a {
 }
 
 #showcase {
-	
+	overflow: hidden;
 	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
