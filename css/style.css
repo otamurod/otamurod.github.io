@@ -94,7 +94,7 @@ header .current a {
 }
 
 #showcase {
-	min-height: 450px;
+	/*min-height: 400px;*/
 	background: url('../img/showcase.jpeg') no-repeat;
 	background-size: 100% 100%;
 	text-align: center;
@@ -108,12 +108,12 @@ header .current a {
 	color: #8411c3;
 }
 
-#showcase p {
+#showcase p, pre {
 	margin-top: 15px;
 	margin-left: 33px;
 	text-align: left;
-	font-size: 12px;
-	color: white;
+	font-size: 10pt;
+	color: black;
 }
 
 #showcase .container1 {
@@ -123,10 +123,31 @@ header .current a {
 }
 
 #showcase img {
-	width: auto;
-	height: 200px;
+	height: 240px;
+	width: 320px;
 	float: left;
-	margin: 15px;
+	margin: 25px;
+	margin-left: 30px;
+	margin-top: 0;
+	border-radius: 18px;
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	
+}
+
+#details {
+	height: 240px;
+	width: 360px;
+	background-color: #b0c1d0;
+	border-radius: 18px;
+	margin-bottom: 25px;
+}
+#details p, pre{
+	margin: 0;
+	padding: 10px;
 }
 
 footer {
