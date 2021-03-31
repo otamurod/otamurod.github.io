@@ -6,7 +6,8 @@ body {
 }
 
 .container {
-	width: 100%;
+	margin: auto;
+	max-width: 90%;
 	overflow: hidden;
 }
 
@@ -112,7 +113,7 @@ header .current a {
 	margin-left: 33px;
 	text-align: left;
 	font-size: 10pt;
-	color: black;
+	color: rgb(210, 227, 252);
 }
 
 #showcase .container1 {
@@ -130,45 +131,52 @@ header .current a {
 	margin-top: 0;
 	border-radius: 18px;
 }
+
 .image {
 	height: 240px;
 	width: 320px;
 	overflow: hidden;
+	border-radius: 18px;
+	margin-top: 15px;
+}
+
+.image2 {
+	height: 360px;
+	width: 240px;
+	overflow: hidden;
 	margin: 0 auto;
 	border-radius: 18px;
 }
-	
-.image img, .box img{
-	transition: transform 2s, filter 1.5s ease-in-out;
- 	 transform-origin: center center;
-  	filter: brightness(85%);
-}
-	
-.image:hover img, .box:hover img{
-	
-	filter: brightness(115%);
-  	transform: scale(1.2);
 
-	/*transform: scale(1.33);*/
+.image img, .image2 img {
+	transition: transform 2s, filter 1.5s ease-in-out;
+	transform-origin: center center;
+	filter: brightness(85%);
+}
+
+.image:hover img, .image2:hover img {
+	filter: brightness(115%);
+	transform: scale(1.2);
 }
 
 .content {
 	display: flex;
-	margin: auto;
 	max-width: 60%;
 	align-content: space-around;
+}
 
+.content a {
+	color: #04c504;
 }
 
 #details {
-	height: 240px;
 	width: 320px;
-	background-color: #b0c1d0;
 	margin: 25px;
 	margin-top: 0;
 	border-radius: 18px;
 }
-#details p, pre{
+
+#details p, pre {
 	margin: 0;
 	padding: 10px;
 }
@@ -187,7 +195,6 @@ footer {
 	margin: auto;
 	max-width: 60%;
 	align-content: space-around;
-
 }
 
 #showcase2 {
@@ -211,21 +218,19 @@ footer {
 	background-color: #b0c1d5;
 }
 
-#boxes1 .box img {
-	/*margin-top: 40px;*/
-	margin: 40px 30px 30px 30px 30px;
-	height: 320px;
-	width: 200px;
+#boxes1 img {
+	height: 360px;
+	width: 240px;
 	border-radius: 18px;
 }
 
 #boxes1 .box {
 	overflow: hidden;
-	/*margin: 0 auto;*/
 	float: left;
 	text-align: left;
-	width: 25%;
-	margin: 0px 10px 0px 10px;
+	width: 24%;
+	margin: 0px 2.5% 0px 2%;
+	padding: 2%;
 }
 
 #boxes .box1 {
@@ -282,7 +287,6 @@ video {
 }
 
 #film video {
-	
 	object-fit: cover;
 	margin: 0;
 }
