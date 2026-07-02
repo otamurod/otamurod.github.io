@@ -1,0 +1,128 @@
+---
+import Container from "./Container.astro";
+import SectionLabel from "./SectionLabel.astro";
+
+const groups = [
+  {
+    title: "Android",
+    icon: "📱",
+    skills: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Android SDK",
+      "Material 3",
+      "Coroutines",
+      "Flow",
+      "Jetpack Navigation",
+      "Room",
+      "WorkManager",
+      "Push Notifications",
+      "DataStore",
+    ]
+  },
+  {
+    title: "Kotlin Multiplatform",
+    icon: "🌍",
+    skills: [
+      "KMP",
+      "Compose Multiplatform",
+      "Swift UI",
+      "Ktor",
+      "Room DB",
+      "SQLDelight",
+      "kotlinx.serialization",
+      "Voyager",
+      "Navigation 3",
+      "Multiplatform Settings",
+      "Cocoapods",
+      "SPM",
+    ]
+  },
+  {
+    title: "Architecture",
+    icon: "🏗",
+    skills: [
+      "MVVM",
+      "MVI",
+      "MVP",
+      "Clean Architecture",
+      "Dependency Injection",
+      "SOLID",
+      "Design Patterns",
+      "Modularization (by layer & feature)",
+    ]
+  },
+  {
+    title: "Backend & Tools",
+    icon: "⚙️",
+    skills: [
+      "Java",
+      "Spring Boot",
+      "REST APIs",
+      "Git",
+      "Firebase",
+      "Gradle",
+      "Docker",
+      "Android Studio",
+      "Xcode",
+      "IntelliJ IDEA",
+      "AI Agents",
+      "CI/CD",
+      "Jenkins",
+      "Jira",
+      "Confluence",
+    ]
+  }
+];
+---
+
+<section
+  id="skills"
+  class="relative scroll-mt-24 pt-8 pb-12 md:pt-10 md:pb-14"
+>
+  <Container>
+    <SectionLabel
+      label="Skills"
+      index="04"
+      class="reveal"
+    />
+    <div
+      class="mt-10 grid gap-6 md:grid-cols-2"
+    >
+      {
+        groups.map(group => (
+
+          <article
+            class="reveal rounded-3xl border border-border/60 bg-card/50 p-6 backdrop-blur-sm transition hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"
+          >
+            <div class="flex items-center gap-3">
+
+              <span class="text-2xl">
+                {group.icon}
+              </span>
+
+              <h3 class="text-xl font-semibold">
+                {group.title}
+              </h3>
+
+            </div>
+
+            <div
+              class="mt-6 flex flex-wrap gap-2"
+            >
+              {
+                group.skills.map(skill => (
+                  <span
+                    class="rounded-full border border-border bg-bg/60 px-3 py-1.5 text-sm text-muted transition hover:border-primary hover:text-text"
+                  >
+                    {skill}
+                  </span>
+                ))
+              }
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Container>
+</section>

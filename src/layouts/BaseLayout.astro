@@ -1,0 +1,88 @@
+---
+import "../styles/global.css";
+import { SITE } from "../consts";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${SITE.name} — ${SITE.role}`,
+  description = SITE.description,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script is:inline>
+    const saved = localStorage.getItem("theme");
+    if(saved==="light"){
+      document.documentElement.classList.add("theme-light");
+    }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0F172A" />
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.name} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-bg text-text antialiased">
+    <div id="cursor-spotlight" class="cursor-spotlight" aria-hidden="true"></div>
+    <slot />
+
+    <script>
+      // Cursor spotlight — track pointer with rAF, only on hover-capable devices.
+      const spot = document.getElementById("cursor-spotlight");
+      const hoverable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (spot && hoverable) {
+        let mx = -200,
+          my = -200,
+          pending = false;
+        const flush = () => {
+          document.documentElement.style.setProperty("--mouse-x", `${mx}px`);
+          document.documentElement.style.setProperty("--mouse-y", `${my}px`);
+          pending = false;
+        };
+        window.addEventListener(
+          "pointermove",
+          (e) => {
+            mx = e.clientX;
+            my = e.clientY;
+            if (!spot.classList.contains("is-active")) spot.classList.add("is-active");
+            if (!pending) {
+              pending = true;
+              requestAnimationFrame(flush);
+            }
+          },
+          { passive: true },
+        );
+        document.addEventListener("mouseleave", () => spot.classList.remove("is-active"));
+      }
+
+      // Scroll reveal — one-shot IntersectionObserver on .reveal elements.
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const targets = document.querySelectorAll<HTMLElement>(".reveal");
+      if (targets.length && !reduce && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+        );
+        targets.forEach((el) => io.observe(el));
+      } else {
+        targets.forEach((el) => el.classList.add("is-in"));
+      }
+    </script>
+  </body>
+</html>

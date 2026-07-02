@@ -1,0 +1,181 @@
+---
+import Container from "./Container.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { NAV_LINKS, SOCIAL } from "../consts";
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300"
+>
+  <div
+    class="absolute inset-0 -z-10 backdrop-blur-md opacity-0 transition-opacity duration-300"
+    id="site-header-bg"
+    style="background: color-mix(in oklab, var(--color-bg) 82%, transparent);"
+  >
+  </div>
+  <Container class="flex h-16 items-center justify-between">
+    <a
+      href="/"
+      class="group inline-flex items-center gap-3 text-base font-bold tracking-tight"
+      aria-label="Home"
+    >
+      <span
+        class="relative grid h-9 w-9 place-items-center rounded-xl border border-border bg-card transition-all duration-300 group-hover:border-primary/60 group-hover:shadow-lg group-hover:shadow-primary/20"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5 text-text transition-transform duration-300 group-hover:scale-110"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle
+            cx="11"
+            cy="12"
+            r="8"
+            stroke="currentColor"
+            stroke-width="3.25"
+          />
+          <circle
+            cx="22.5"
+            cy="18.5"
+            r="1.75"
+            fill="var(--color-primary)"
+          />
+        </svg>
+      </span>
+
+      <span class="hidden sm:inline text-lg font-semibold tracking-tight">
+        Otamurod
+      </span>
+
+      <span class="hidden sm:inline text-primary text-lg">.</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-1 rounded-full border border-border/60 bg-surface/60 px-1.5 py-1 text-sm">
+        {
+          NAV_LINKS.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="rounded-full px-3 py-1.5 text-muted transition-colors hover:text-text hover:bg-card/80"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+
+      <a
+        href={SOCIAL.resume}
+        class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-3.5 py-1.5 text-xs font-medium text-text transition hover:bg-primary/20 hover:border-primary/60"
+      >
+        Resume
+        <svg
+          viewBox="0 0 24 24"
+          class="h-3 w-3"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 4v12" />
+          <path d="M6 10l6 6 6-6" />
+          <path d="M4 20h16" />
+        </svg>
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-border/60 bg-surface/60 text-muted transition hover:text-text hover:bg-card/80"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Toggle menu"
+      >
+        <svg
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 7h16" />
+          <path d="M4 12h16" />
+          <path d="M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </Container>
+
+  <div
+    id="mobile-menu"
+    hidden
+    class="md:hidden border-t border-border/60 bg-bg/95 backdrop-blur"
+  >
+    <Container class="py-4">
+      <ul class="flex flex-col gap-1 text-sm">
+        {
+          NAV_LINKS.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                data-mobile-link
+                class="block rounded-lg px-3 py-2.5 text-muted transition-colors hover:text-text hover:bg-card/60"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mt-2">
+          <a
+            href={SOCIAL.resume}
+            class="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-text transition hover:bg-primary/20"
+          >
+            Download Resume
+          </a>
+        </li>
+      </ul>
+    </Container>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const bg = document.getElementById("site-header-bg");
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  const onScroll = () => {
+    const scrolled = window.scrollY > 8;
+    header?.classList.toggle("border-border/60", scrolled);
+    if (bg) bg.style.opacity = scrolled ? "1" : "0";
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    if (menu) menu.hidden = expanded;
+  });
+
+  document.querySelectorAll("[data-mobile-link]").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle?.setAttribute("aria-expanded", "false");
+      if (menu) menu.hidden = true;
+    });
+  });
+</script>
