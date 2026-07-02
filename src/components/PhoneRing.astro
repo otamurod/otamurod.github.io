@@ -1,0 +1,288 @@
+---
+import PhoneFrame from "./PhoneFrame.astro";
+
+import prayerHome from "../assets/prayer-home.webp";
+import qibla from "../assets/qibla.webp";
+import quran from "../assets/quran.webp";
+
+const phones = [
+  { image: prayerHome, alt: "Prayer times home screen", title: "Prayer Times" },
+  { image: qibla,      alt: "Qibla compass",            title: "Qibla Compass" },
+  { image: quran,      alt: "Holy Qur'an reader",       title: "Holy Qur'an" },
+];
+---
+
+<div class="ring-wrap" role="region" aria-label="Nurul Quran screenshots">
+  <div class="ring-stage">
+    <ul class="ring-list" role="list">
+      {
+        phones.map((phone, i) => (
+          <li class="ring-item" data-index={i} style={`--angle: ${(i * 360) / phones.length}deg`}>
+            <button
+              type="button"
+              class="ring-btn"
+              aria-label={`Show ${phone.title}`}
+            >
+              <PhoneFrame
+                image={phone.image}
+                alt={phone.alt}
+                index={i}
+                eager={i === 0}
+              />
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <p class="ring-title" aria-live="polite" data-ring-title>
+    {phones[0].title}
+  </p>
+
+  <div class="ring-pager" role="tablist" aria-label="Change screen">
+    {
+      phones.map((phone, i) => (
+        <button
+          type="button"
+          class="pager-dot"
+          data-dot={i}
+          role="tab"
+          aria-label={phone.title}
+          aria-selected={i === 0 ? "true" : "false"}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script is:inline define:vars={{ titles: phones.map((p) => p.title) }}>
+  const wrap = document.querySelector(".ring-wrap");
+  if (wrap) {
+    const items = Array.from(wrap.querySelectorAll(".ring-item"));
+    const dots = Array.from(wrap.querySelectorAll(".pager-dot"));
+    const titleEl = wrap.querySelector("[data-ring-title]");
+    const N = items.length;
+    const angles = items.map((_, i) => (i * 360) / N);
+    let active = 0;
+    let timer = null;
+    const INTERVAL = 4200;
+
+    const setZIndexAtFinal = () => {
+      items.forEach((el, i) => {
+        const final = ((angles[i] % 360) + 360) % 360;
+        const frontness = (1 + Math.cos((final * Math.PI) / 180)) / 2;
+        el.style.zIndex = String(Math.round(10 + 90 * frontness));
+      });
+    };
+
+    const setCssAngles = () => {
+      items.forEach((el, i) => {
+        el.style.setProperty("--angle", `${angles[i]}deg`);
+      });
+    };
+
+    const syncPager = () => {
+      dots.forEach((dot, i) => {
+        const isActive = i === active;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      if (titleEl) titleEl.textContent = titles[active];
+    };
+
+    const goTo = (targetIndex) => {
+      if (targetIndex === active) return;
+      const currentMod = ((angles[targetIndex] % 360) + 360) % 360;
+      // Always rotate the ring counter-clockwise (angles decrease) so motion feels consistent.
+      const delta = currentMod === 0 ? 0 : -currentMod;
+      angles.forEach((_, i) => (angles[i] += delta));
+      active = targetIndex;
+      setZIndexAtFinal();
+      setCssAngles();
+      syncPager();
+    };
+
+    const advance = () => goTo((active + 1) % N);
+
+    items.forEach((el) => {
+      el.querySelector(".ring-btn")?.addEventListener("click", () => {
+        goTo(Number(el.dataset.index));
+        restart();
+      });
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        goTo(Number(dot.dataset.dot));
+        restart();
+      });
+    });
+
+    const start = () => {
+      if (timer !== null) return;
+      timer = window.setInterval(advance, INTERVAL);
+    };
+    const stop = () => {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+    const restart = () => {
+      stop();
+      start();
+    };
+
+    wrap.addEventListener("mouseenter", stop);
+    wrap.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    setZIndexAtFinal();
+    syncPager();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduced) start();
+  }
+</script>
+
+<style>
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .ring-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 4px 0 4px;
+    isolation: isolate;
+  }
+
+  .ring-stage {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    height: 460px;
+    margin-inline: auto;
+  }
+  /* Override PhoneFrame's absolute positioning so the phone
+     sizes the .ring-item LI, and the LI's translate(-50%, -50%)
+     centering trick actually resolves to the phone's dimensions. */
+  .ring-item :global(.phone) {
+    position: relative;
+    width: 190px;
+  }
+  .ring-stage::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 -20px 0;
+    height: 60px;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in oklab, var(--color-primary) 22%, transparent),
+      transparent 70%
+    );
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ring-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ring-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    --a: 240px;
+    --b: 18px;
+    --angle: 0deg;
+    /* frontness = (1 + cos(angle)) / 2 — 1 at the front (angle 0), 0 at the back (angle 180) */
+    transform:
+      translate(-50%, -50%)
+      translate(
+        calc(sin(var(--angle)) * var(--a)),
+        calc(cos(var(--angle)) * var(--b))
+      )
+      scale(calc(0.55 + 0.45 * ((1 + cos(var(--angle))) / 2)));
+    opacity: calc(0.28 + 0.72 * ((1 + cos(var(--angle))) / 2));
+    filter:
+      blur(calc(0.1px * (1 - (1 + cos(var(--angle))) / 2)))
+      saturate(calc(0.7 + 0.3 * ((1 + cos(var(--angle))) / 2)));
+    transition: --angle 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity, filter;
+  }
+
+  .ring-btn {
+    display: block;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 42px;
+  }
+  .ring-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 6px;
+  }
+
+  .ring-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-align: center;
+    min-height: 1em;
+  }
+
+  .ring-pager {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .pager-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-muted) 55%, transparent);
+    cursor: pointer;
+    transition:
+      width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.35s;
+  }
+  .pager-dot.is-active {
+    width: 28px;
+    background: var(--color-primary);
+  }
+  .pager-dot:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .ring-stage { height: 400px; }
+    .ring-item { --a: 120px; --b: 12px; }
+    .ring-item :global(.phone) { position: relative; width: 155px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ring-item { transition: none; }
+  }
+</style>

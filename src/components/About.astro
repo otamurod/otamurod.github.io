@@ -1,0 +1,51 @@
+---
+import Container from "./Container.astro";
+import SectionLabel from "./SectionLabel.astro";
+---
+
+<section
+  id="about"
+  class="relative scroll-mt-24 pt-8 pb-12 md:pt-10 md:pb-14"
+  aria-labelledby="about-label"
+>
+  <Container>
+    <div class="max-w-3xl">
+      <SectionLabel label="About" index="01" class="reveal" />
+
+      <h2 id="about-label" class="sr-only">About</h2>
+
+      <p
+        class="reveal mt-8 text-xl leading-relaxed text-muted sm:text-2xl sm:leading-relaxed md:mt-10"
+        style="--reveal-delay: 80ms"
+      >
+        I graduated from Inha University in Tashkent <span class="text-text font-medium">ranked first out of 337</span> in my final semester. Working across Android and Kotlin Multiplatform teams since then, I've learned that the hardest part of shipping software isn't the framework you pick — it's the careful code review, the clear module boundary, and the honest scope conversation. I work best with teammates who write code they'd want to inherit, and I try to <span class="text-text font-medium">leave every project easier to work with than I found it</span>.
+      </p>
+
+      <div
+        class="reveal mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted"
+        style="--reveal-delay: 160ms"
+      >
+        <div class="flex items-center gap-2">
+          <span
+            class="grid h-6 w-6 place-items-center rounded-md border border-border/60 bg-surface/60"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3 w-3 text-primary"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 2 15 9l7 .6-5.3 4.7L18 22l-6-3.5L6 22l1.3-7.7L2 9.6 9 9z" />
+            </svg>
+          </span>
+          <span class="text-text font-medium">B.Sc. Computer Science</span>
+          <span class="text-muted">— Inha University in Tashkent</span>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

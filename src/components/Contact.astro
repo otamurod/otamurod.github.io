@@ -1,0 +1,119 @@
+---
+import Container from "./Container.astro";
+import SectionLabel from "./SectionLabel.astro";
+import { CONTACT } from "../consts";
+---
+
+<section
+  id="contact"
+  class="relative scroll-mt-24 pt-8 pb-12 md:pt-10 md:pb-14"
+  aria-labelledby="contact-heading"
+>
+  <Container>
+    <SectionLabel
+      label="Contact"
+      index="05"
+      class="reveal"
+    />
+
+    <div
+      class="reveal mt-10 rounded-3xl border border-border/60 bg-gradient-to-br from-surface via-surface to-card p-10 shadow-xl shadow-primary/5"
+      style="--reveal-delay:80ms"
+    >
+      <h2
+        id="contact-heading"
+        class="text-4xl font-semibold tracking-tight"
+      >
+        Let's build something
+        <span class="text-primary">great together.</span>
+      </h2>
+
+      <p class="mt-5 max-w-2xl text-muted leading-relaxed">
+        I'm currently open to Senior Android,
+        Kotlin Multiplatform and Mobile Platform
+        opportunities.
+        Whether you have a product to build or
+        want to modernize an existing application,
+        I'd love to hear about it.
+      </p>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2">
+        <a
+          href={`mailto:${CONTACT.email}`}
+          class="group rounded-2xl border border-border bg-bg/40 p-5 transition hover:border-primary/40"
+        >
+          <p class="text-xs uppercase tracking-widest text-muted">
+            Email
+          </p>
+
+          <p class="mt-2 text-lg font-semibold">
+            {CONTACT.email}
+          </p>
+
+          <span class="mt-4 inline-flex items-center gap-2 text-primary">
+            Send email →
+          </span>
+        </a>
+
+        <a
+          href={CONTACT.resume}
+          target="_blank"
+          class="group rounded-2xl border border-border bg-bg/40 p-5 transition hover:border-primary/40"
+        >
+          <p class="text-xs uppercase tracking-widest text-muted">
+            Resume
+          </p>
+
+          <p class="mt-2 text-lg font-semibold">
+            Review my CV
+          </p>
+
+          <span class="mt-4 inline-flex items-center gap-2 text-primary">
+            Download →
+          </span>
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a
+          href={CONTACT.github}
+          target="_blank"
+          class="rounded-full border border-border px-5 py-3 transition hover:border-primary hover:text-primary"
+        >
+          GitHub
+        </a>
+
+        <a
+          href={CONTACT.linkedin}
+          target="_blank"
+          class="rounded-full border border-border px-5 py-3 transition hover:border-primary hover:text-primary"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href={CONTACT.play}
+          target="_blank"
+          class="rounded-full border border-border px-5 py-3 transition hover:border-primary hover:text-primary"
+        >
+          Google Play
+        </a>
+      </div>
+
+      <div class="mt-10 border-t border-border pt-8 flex flex-wrap gap-8 text-sm text-muted">
+
+        <span>
+          📍 Tashkent, Uzbekistan
+        </span>
+
+        <span>
+          Available for Remote & Office works
+        </span>
+
+        <span>
+          All the best!
+        </span>
+      </div>
+    </div>
+  </Container>
+</section>

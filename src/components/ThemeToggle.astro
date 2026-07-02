@@ -1,0 +1,43 @@
+<button
+  id="theme-toggle"
+  class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/60 transition hover:bg-primary/10"
+  aria-label="Toggle theme"
+>
+  🌙
+</button>
+
+<script is:inline>
+const button = document.getElementById("theme-toggle");
+
+function applyTheme(theme) {
+  const html = document.documentElement;
+
+  html.classList.toggle("theme-light", theme === "light");
+  localStorage.setItem("theme", theme);
+
+  // Update browser UI color
+  const meta = document.querySelector('meta[name="theme-color"]');
+  meta?.setAttribute(
+    "content",
+    theme === "light" ? "#FAFAFA" : "#0F172A"
+  );
+
+  button.textContent = theme === "light" ? "☀️" : "🌙";
+}
+
+button?.addEventListener("click", () => {
+  const next =
+    document.documentElement.classList.contains("theme-light")
+      ? "dark"
+      : "light";
+
+  applyTheme(next);
+});
+
+// initialize
+applyTheme(
+  document.documentElement.classList.contains("theme-light")
+    ? "light"
+    : "dark"
+);
+</script>

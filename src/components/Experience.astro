@@ -1,0 +1,199 @@
+---
+import Container from "./Container.astro";
+import SectionLabel from "./SectionLabel.astro";
+import { EXPERIENCE } from "../consts";
+---
+
+<section
+  id="experience"
+  class="relative scroll-mt-24 pt-8 pb-12 md:pt-10 md:pb-14"
+  aria-labelledby="experience-label"
+>
+  <Container>
+    <div class="max-w-4xl">
+      <SectionLabel label="Experience" index="02" class="reveal" />
+      <h2 id="experience-label" class="sr-only">Experience</h2>
+
+      <ol class="relative mt-10 md:mt-12">
+        {
+          EXPERIENCE.map((role, i) => (
+            <li
+              class="reveal group relative pl-6 md:pl-8"
+              style={`--reveal-delay: ${Math.min(i, 3) * 80}ms`}
+            >
+              <span
+                class="absolute left-0 top-2 h-2 w-2 rounded-full bg-primary shadow-[0_0_0_4px_rgb(124_58_237_/_0.12)] transition-transform duration-500 group-hover:scale-125"
+                aria-hidden="true"
+              />
+              {i < EXPERIENCE.length - 1 && (
+                <span
+                  class="absolute left-[3px] top-6 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary/40 via-border to-border/20"
+                  aria-hidden="true"
+                />
+              )}
+
+              <article class="pb-14 md:pb-16">
+                <p class="text-xs font-medium uppercase tracking-[0.15em] text-muted tabular-nums">
+                  {role.period}
+                </p>
+
+                <h3 class="mt-2 text-lg font-semibold text-text sm:text-xl">
+                  {role.role}
+                </h3>
+
+                <p class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+                  {role.href ? (
+                    <a
+                      href={role.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/company inline-flex items-center gap-1 text-text transition-colors hover:text-primary"
+                    >
+                      {role.company}
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="h-3 w-3 -translate-y-px opacity-0 transition-opacity group-hover/company:opacity-100"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 17L17 7" />
+                        <path d="M8 7h9v9" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <span class="text-text">{role.company}</span>
+                  )}
+                  <span aria-hidden="true">·</span>
+                  <span>{role.location}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{role.type}</span>
+                </p>
+
+                {role.promotion && (
+                  <div class="mt-5 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4">
+                    <div class="mb-4 flex items-center gap-2">
+                      <span class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-primary">
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 19V5" />
+                          <path d="M5 12l7-7 7 7" />
+                        </svg>
+                      </span>
+
+                      <div>
+                        <p class="text-sm font-semibold text-text">
+                          Career Progression
+                        </p>
+                        <p class="text-xs text-muted">
+                          Internal promotion
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                      <div>
+                        <p class="text-[11px] uppercase tracking-wider text-muted">
+                          {role.promotion.fromPeriod}
+                        </p>
+
+                        <p class="mt-1 text-sm font-medium text-muted">
+                          {role.promotion.fromRole}
+                        </p>
+                      </div>
+
+                      <div class="flex justify-center promotion-arrow">
+                        <div class="rounded-full border border-primary/25 bg-primary/10 p-2">
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-4 w-4 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14" />
+                            <path d="M13 6l6 6-6 6" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <div class="sm:text-right">
+                        <p class="text-[11px] uppercase tracking-wider text-primary">
+                          {role.promotion.toPeriod}
+                        </p>
+
+                        <p class="mt-1 text-sm font-semibold text-text">
+                          {role.promotion.toRole}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <ul class="mt-4 space-y-2.5 text-sm leading-relaxed text-muted sm:text-base sm:leading-relaxed">
+                  {role.highlights.map((h) => (
+                    <li class="flex gap-3">
+                      <span
+                        class="mt-[0.65em] h-1 w-1 flex-shrink-0 rounded-full bg-muted/70"
+                        aria-hidden="true"
+                      />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="mt-5 flex flex-wrap gap-1.5">
+                  {role.stack.map((tech) => (
+                    <span class="rounded-full border border-border/60 bg-surface/60 px-2.5 py-1 text-[11px] font-medium text-muted transition-colors group-hover:border-border group-hover:text-text/90">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div
+        class="reveal mt-4 flex items-center gap-3 text-sm text-muted"
+        style="--reveal-delay: 240ms"
+      >
+        <span class="h-px flex-1 bg-border/60" aria-hidden="true"></span>
+        <a
+          href="/otamurod-safarov-cv.pdf"
+          class="inline-flex items-center gap-1.5 text-muted transition-colors hover:text-text"
+        >
+          View full resume
+          <svg
+            viewBox="0 0 24 24"
+            class="h-3.5 w-3.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M8 7h9v9" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>

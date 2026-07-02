@@ -1,0 +1,229 @@
+---
+import PhoneFrame from "./PhoneFrame.astro";
+
+import prayerHome from "../assets/prayer-home.webp";
+import qibla from "../assets/qibla.webp";
+import quran from "../assets/quran.webp";
+
+const phones = [
+  { image: prayerHome, alt: "Prayer times home screen", title: "Prayer Times" },
+  { image: qibla,      alt: "Qibla compass",             title: "Qibla Compass" },
+  { image: quran,      alt: "Holy Qur'an reader",        title: "Holy Qur'an" },
+];
+---
+
+<div class="phone-stack-wrap">
+  <ul class="phone-stack" role="list">
+    {
+      phones.map((phone, index) => (
+        <li class="phone-slot" data-slot={index}>
+          <PhoneFrame
+            image={phone.image}
+            alt={phone.alt}
+            index={index}
+            eager={index === 0}
+          />
+          <p class="phone-title" aria-hidden="true">{phone.title}</p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="phone-pager" role="tablist" aria-label="Change featured screen">
+    {
+      phones.map((phone, i) => (
+        <button
+          type="button"
+          class="pager-dot"
+          data-dot={i}
+          role="tab"
+          aria-label={phone.title}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>(".phone-stack-wrap");
+  const stack = wrap?.querySelector<HTMLElement>(".phone-stack");
+  if (wrap && stack) {
+    const initialSlots = Array.from(
+      stack.querySelectorAll<HTMLElement>(".phone-slot")
+    );
+    const dots = Array.from(
+      wrap.querySelectorAll<HTMLButtonElement>(".pager-dot")
+    );
+    const order = initialSlots.slice();
+    const total = order.length;
+
+    const transforms = [
+      "translate(0, 0) scale(1.04)",
+      "translate(58px, 30px) rotate(7deg) scale(0.9)",
+      "translate(-48px, 28px) rotate(-7deg) scale(0.9)",
+    ];
+
+    const render = () => {
+      order.forEach((slot, position) => {
+        slot.style.zIndex = String(100 - position);
+        slot.style.transform = transforms[position] ?? transforms[2];
+        const phoneEl = slot.querySelector(".phone");
+        phoneEl?.classList.toggle("is-active", position === 0);
+      });
+      const activeSlotIndex = Number(order[0].dataset.slot);
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === activeSlotIndex);
+        dot.setAttribute(
+          "aria-selected",
+          i === activeSlotIndex ? "true" : "false"
+        );
+      });
+    };
+
+    const bringToFront = (slotIndex: number) => {
+      const idx = order.findIndex(
+        (s) => Number(s.dataset.slot) === slotIndex
+      );
+      if (idx <= 0) return;
+      const [picked] = order.splice(idx, 1);
+      order.unshift(picked);
+      render();
+    };
+
+    const advance = () => {
+      const last = order.pop();
+      if (last) order.unshift(last);
+      render();
+    };
+
+    order.forEach((slot) => {
+      slot.addEventListener("click", () => {
+        bringToFront(Number(slot.dataset.slot));
+        restart();
+      });
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        bringToFront(Number(dot.dataset.dot));
+        restart();
+      });
+    });
+
+    // Auto-rotate with reset on manual interaction; pause on hover / hidden tab.
+    const INTERVAL = 4200;
+    let timer: number | null = null;
+    const start = () => {
+      if (timer !== null) return;
+      timer = window.setInterval(advance, INTERVAL);
+    };
+    const stop = () => {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+    const restart = () => {
+      stop();
+      start();
+    };
+    wrap.addEventListener("mouseenter", stop);
+    wrap.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    render();
+    if (!reduced) start();
+  }
+</script>
+
+<style>
+  .phone-stack-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .phone-stack {
+    position: relative;
+    width: 340px;
+    height: 540px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: phone-float 6s ease-in-out infinite;
+  }
+
+  @keyframes phone-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  .phone-slot {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .phone-title {
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    opacity: 0;
+    transition: opacity 0.35s ease 0.15s;
+  }
+  .phone-slot:has(.phone.is-active) .phone-title { opacity: 1; }
+
+  .phone-pager {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .pager-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-muted) 60%, transparent);
+    cursor: pointer;
+    transition:
+      width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.35s;
+  }
+  .pager-dot.is-active {
+    width: 28px;
+    background: var(--color-primary);
+  }
+  .pager-dot:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 900px) {
+    .phone-stack {
+      width: 300px;
+      height: 500px;
+    }
+    .phone-slot {
+      left: 40px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-stack { animation: none; }
+    .phone-slot { transition: none; }
+  }
+</style>
