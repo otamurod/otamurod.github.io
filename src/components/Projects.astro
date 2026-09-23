@@ -1,0 +1,174 @@
+---
+import Container from "./Container.astro";
+import SectionLabel from "./SectionLabel.astro";
+import { PROJECTS } from "../consts";
+---
+
+<section
+  class="relative scroll-mt-24 pt-4 pb-16 md:pt-6 md:pb-20"
+  aria-labelledby="selected-projects-label"
+>
+  <Container>
+    <div class="max-w-6xl">
+      <SectionLabel
+        label="Selected Work"
+        index="04"
+        class="reveal"
+      />
+
+      <div class="mt-8 grid gap-5 md:grid-cols-2 md:gap-6">
+        {
+          PROJECTS.map((project, index) => (
+            <article
+              class="reveal group relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-surface/90 via-surface to-card/70 p-6 shadow-lg shadow-primary/[0.025] transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl hover:shadow-primary/[0.06] sm:p-7"
+              style={`--reveal-delay: ${index * 70}ms`}
+            >
+              {/* Ambient glow */}
+              <div
+                class="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 opacity-0 blur-3xl transition duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              ></div>
+
+              <div class="relative">
+                <!-- Header -->
+                <div class="flex items-start justify-between gap-4">
+                  <div class="min-w-0">
+                    <div
+                      class="inline-flex items-center gap-2 rounded-full border border-border/60 bg-bg/60 px-2.5 py-1 text-[11px] font-medium text-muted backdrop-blur-sm"
+                    >
+                      <span
+                        class="h-1.5 w-1.5 rounded-full bg-primary"
+                        aria-hidden="true"
+                      ></span>
+                      {project.category}
+                    </div>
+
+                    <h3
+                      class="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl"
+                    >
+                      {project.name}<span class="text-primary">.</span>
+                    </h3>
+
+                    <p class="mt-1 text-sm font-medium text-muted">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  <div
+                    class="hidden shrink-0 rounded-2xl border border-border/50 bg-bg/50 p-3 text-muted sm:block"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="5" y="2" width="14" height="20" rx="2" />
+                      <path d="M9 6h6" />
+                      <path d="M10 18h4" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <p class="mt-5 text-sm leading-relaxed text-muted">
+                  {project.description}
+                </p>
+
+                <!-- Contributions -->
+                <ul class="mt-5 space-y-2.5">
+                  {
+                    project.highlights.map((highlight) => (
+                      <li class="flex items-start gap-2.5 text-sm text-muted">
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        <span>{highlight}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+
+                <!-- Technology stack -->
+                <div class="mt-6 flex flex-wrap gap-1.5">
+                  {
+                    project.stack.map((tech) => (
+                      <span
+                        class="rounded-full border border-border/60 bg-bg/50 px-2.5 py-1 text-[10px] font-medium text-muted transition-colors group-hover:border-primary/20"
+                      >
+                        {tech}
+                      </span>
+                    ))
+                  }
+                </div>
+
+                <!-- Links -->
+                <div class="mt-7 flex flex-wrap gap-2">
+                  {
+                    project.links.map((link) => (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group/link inline-flex items-center gap-2 rounded-full border border-border/70 bg-bg/60 px-3.5 py-2 text-xs font-semibold text-text backdrop-blur-sm transition hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+                      >
+                        {link.platform === "ios" ? (
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-4 w-4"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.81 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.96-2.54 4.07l.01.01zM12.03 7.25C11.88 5.02 13.69 3.18 15.82 3c.29 2.58-2.34 4.5-3.79 4.25z" />
+                          </svg>
+                        ) : (
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-4 w-4"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973 1.14.821zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z" />
+                          </svg>
+                        )}
+
+                        {link.label}
+
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="M13 6l6 6-6 6" />
+                        </svg>
+                      </a>
+                    ))
+                  }
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
