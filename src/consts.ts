@@ -1,11 +1,11 @@
 export const SITE = {
   name: "Otamurod Safarov",
-  role: "Senior Android Engineer",
+  role: "Middle Android Engineer",
   secondaryRole: "Kotlin Multiplatform Developer",
   location: "Tashkent, Uzbekistan",
-  yearsOfExperience: "5+",
+  yearsOfExperience: "4+",
   description:
-    "Senior Android Engineer specializing in Kotlin, Jetpack Compose, and Kotlin Multiplatform. I build production apps with Clean Architecture, modular design, and shared Android/iOS business logic.",
+    "Middle Android Engineer specializing in Kotlin, Jetpack Compose, and Kotlin Multiplatform. I build production apps with Clean Architecture, modular design, and shared Android/iOS business logic.",
   shortBio:
     "I build production Android apps with Kotlin, Jetpack Compose, and Clean Architecture — and shared business logic across platforms with Kotlin Multiplatform.",
   url: "https://otamurod.github.io",
@@ -29,39 +29,41 @@ export const NAV_LINKS = [
 
 export const EXPERIENCE = [
   {
-    period: "Aug 2025 — Jun 2026",
-    role: "Senior Android Developer",
-    company: "Softonic Uzbekistan",
-    href: "https://www.linkedin.com/company/softonic-uzbekistan/",
+    period: "Mar 2025 — Jun 2026",
+    role: "Android Developer",
+    company: "Confidential Client (NDA)",
+    href: undefined,
     location: "Tashkent, Uzbekistan",
-    type: "Full-time",
+    type: "Full-time Contract",
     promotion: undefined,
     highlights: [
-      "Joined a large-scale Android codebase mid-migration, stabilizing release cycles while progressively converting legacy screens to Jetpack Compose within a Clean Architecture + MVVM, multi-module project.",
-      "Drove bug resolution and feature improvements across UI, data, and domain layers on 3 concurrent projects — without disrupting the ongoing migration.",
-      "Integrated authenticated REST APIs with robust token refresh, domain-layer abstractions, and resilient error handling.",
+      "Delivered a native Android app for a smart electricity and gas metering platform, integrating two IoT meter hardware revisions over WiFi.",
+      "Advanced from XML-to-Compose migration work to full ownership of assigned sprint tickets — unit testing, code review, crash investigation, and architecture refactoring.",
+      "Stabilized release cycles while migrating legacy screens to Jetpack Compose within a multi-module Clean Architecture + MVVM codebase.",
+      "Partnered daily with UI/UX, QA, backend, iOS, and product teams in an Agile/Scrum environment.",
     ],
     stack: [
       "Kotlin",
       "Jetpack Compose",
       "Clean Architecture",
       "MVVM",
-      "Multi-module",
-      "REST",
+      "Coroutines",
+      "Retrofit",
     ],
   },
   {
-    period: "Nov 2024 — Jul 2025",
-    role: "Middle Kotlin Multiplatform Developer",
-    company: "Green Light ELD",
-    href: "https://www.linkedin.com/company/green-light-eld/",
+    period: "Nov 2024 — Mar 2025",
+    role: "Middle Android Developer",
+    company: "Softonic Global (formerly Softonic Uzbekistan)",
+    href: "https://www.linkedin.com/company/softonic-uzbekistan/",
     location: "Tashkent, Uzbekistan",
     type: "Full-time",
     promotion: undefined,
     highlights: [
-      "Identified and resolved critical bugs on Android and iOS, contributing to a 20% improvement in app stability.",
-      "Refactored core shared modules, reducing code complexity by 25% and enhancing long-term scalability.",
-      "Integrated advanced mapping and navigation with real-time location tracking.",
+      "Continued development of the ELD telematics platform(s) after Softonic directly engaged the delivery engineering team following the Green Light ELD handoff.",
+      "Resolved critical cross-platform defects on Android and iOS, contributing to a 20% improvement in app stability and user satisfaction.",
+      "Refactored core shared modules, reducing code complexity by 25% and reinforcing long-term maintainability.",
+      "Designed responsive UI components and integrated mapping/navigation features, including real-time location tracking.",
     ],
     stack: [
       "Kotlin Multiplatform",
@@ -73,31 +75,45 @@ export const EXPERIENCE = [
     ],
   },
   {
-    period: "Jan 2022 — Oct 2024",
-    role: "Middle Kotlin Multiplatform Developer",
+    period: "Sep 2024 — Oct 2024",
+    role: "Android / Kotlin Multiplatform Engineer",
+    company: "Green Light ELD",
+    href: "https://www.linkedin.com/company/green-light-eld/",
+    location: "Tashkent, Uzbekistan",
+    type: "Full-time Contract",
+    promotion: undefined,
+    highlights: [
+      "Joined an ELD telematics initiative through the Green Light ELD delivery team, contributing to mobile development and IoT device integrations for commercial trucking and logistics.",
+      "Implemented low-level SDK integrations for IoT/ELD hardware, including Bluetooth device communication and data-synchronization layers.",
+      "Published and managed releases across the App Store and Google Play, coordinating release activities under a compressed delivery timeline.",
+      "Following a successful delivery, the client engaged the engineering team directly, continuing the project under Softonic Uzbekistan.",
+    ],
+    stack: [
+      "Kotlin Multiplatform",
+      "Bluetooth / BLE",
+      "Android",
+      "iOS",
+    ],
+  },
+  {
+    period: "Jun 2023 — Nov 2023",
+    role: "Android Developer",
     company: "TaffHub",
     href: undefined,
     location: "Remote · Russia",
     type: "Full-time",
-    promotion: {
-      fromRole: "Android Developer",
-      fromPeriod: "Jan 2022 — Dec 2023",
-      toRole: "Middle KMP Developer",
-      toPeriod: "Jan 2024 — Oct 2024",
-    },
+    promotion: undefined,
     highlights: [
-      "Started as Android Developer, promoted to Middle KMP Developer after two years of consistently delivering production Android apps with positive client feedback.",
-      "Optimized shared code modules and improved cross-platform consistency across Android and iOS, reducing build times and platform-specific defects.",
-      "Collaborated with product, design, and backend teams to ship production-ready features and improve app responsiveness through profiling and code optimization.",
+      "Built production Android applications that improved user engagement and retention.",
+      "Collaborated closely with product, design, and backend teams to deliver production-ready features.",
+      "Improved application responsiveness through profiling, testing, debugging, and code optimization.",
+      "Delivered projects ahead of schedule, earning consistently positive client feedback.",
     ],
     stack: [
-      "Kotlin Multiplatform",
       "Kotlin",
-      "Java",
       "Android SDK",
       "MVVM",
-      "Coroutines",
-      "Retrofit",
+      "XML",
     ],
   },
 ] as const;
@@ -106,6 +122,7 @@ export const FEATURED_PROJECT = {
   name: "Nurul Quran",
   tagline: "The Light of the Qur'an",
   category: "Personal · Google Play",
+  sourceCode: "https://github.com/otamurod/TheHolyQuranKMP",
   href: "https://play.google.com/store/apps/details?id=com.otamurod.quronikarim",
   description:
     "A production-ready Islamic companion application serving thousands of users with the Holy Quran, prayer times, Qibla direction, Sahih al-Bukhari, Ramadan tools, Islamic books, and offline-first experiences. Currently being migrated using Kotlin Multiplatform and Compose Multiplatform to deliver a shared Android and iOS codebase.",
@@ -146,6 +163,134 @@ export const FEATURED_PROJECT = {
     "Material 3",
   ],
 } as const;
+
+export const PROJECTS = [
+  {
+    name: "TrackPro ELD",
+    tagline: "FMCSA-compliant ELD & fleet tracking",
+    category: "Professional · iOS + Android",
+    description:
+      "A production ELD and fleet-tracking platform built for commercial trucking, combining Hours of Service compliance, real-time vehicle visibility, and communication with in-cab hardware. I contributed across both mobile platforms and the shared KMP layer.",
+    highlights: [
+      "Developed and maintained Android and iOS clients while sharing core business logic through Kotlin Multiplatform.",
+      "Integrated mobile clients with Bluetooth-connected ELD hardware and worked on reliable data synchronization between devices and the backend.",
+      "Diagnosed production issues across the mobile stack, improving stability in a hardware-dependent environment.",
+      "Supported Google Play and App Store releases, from release preparation through production delivery.",
+    ],
+    stack: [
+      "Kotlin",
+      "Kotlin Multiplatform",
+      "Android",
+      "iOS",
+      "Bluetooth / BLE",
+      "IoT",
+    ],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=uz.softonic.trackpro.eld.android",
+        platform: "android",
+      },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/ru/app/trackpro-eld/id6480591761",
+        platform: "ios",
+      },
+    ],
+  },
+
+  {
+    name: "Level ELD",
+    tagline: "ELD, HOS & fleet management",
+    category: "Professional · iOS + Android",
+    description:
+      "A cross-platform fleet management solution designed around driver compliance, vehicle activity, and real-time location tracking. My work covered Android and iOS development, shared KMP business logic, hardware communication, and production issue resolution.",
+    highlights: [
+      "Built and refined cross-platform mobile features with Kotlin Multiplatform across Android and iOS.",
+      "Implemented and maintained communication with Bluetooth/IoT ELD hardware used in real-world trucking workflows.",
+      "Investigated production issues and delivered UI improvements across driver and fleet-management flows.",
+      "Worked alongside the team on coordinated Android and iOS releases and cross-platform feature delivery.",
+    ],
+    stack: [
+      "Kotlin",
+      "Kotlin Multiplatform",
+      "Android",
+      "iOS",
+      "Bluetooth / BLE",
+      "Maps",
+    ],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=uz.udt.american.eld.android",
+        platform: "android",
+      },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/us/app/level-eld/id6737808577",
+        platform: "ios",
+      },
+    ],
+  },
+
+  {
+    name: "UTruckin ELD",
+    tagline: "ELD compliance & real-time fleet tracking",
+    category: "Professional · Android",
+    description:
+      "An Android ELD solution focused on everyday trucking operations, from HOS compliance and live tracking to driver messaging and violation alerts. I worked on production fixes, navigation and location features, and shared modules supporting the broader ELD product line.",
+		highlights: [
+      "Developed Android features for HOS compliance, live fleet tracking, driver communication, and navigation workflows.",
+      "Tracked down production bugs and improved reliability across location-based and driver-facing functionality.",
+      "Worked with real-time location and navigation features used by commercial drivers in day-to-day operations.",
+      "Maintained shared mobile modules supporting functionality across the broader ELD product family.",
+    ],
+    stack: [
+      "Kotlin",
+      "Android",
+      "Kotlin Multiplatform",
+      "Maps",
+      "Navigation",
+      "Coroutines",
+    ],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=uz.softonic.utruckin.android",
+        platform: "android",
+      },
+    ],
+  },
+
+  {
+    name: "GreenLight ELD",
+    tagline: "Now published as Quantum Logbook",
+    category: "Professional · Android",
+    description:
+      "An ELD telematics application providing automated HOS tracking, DVIR workflows, IFTA reporting, and GPS-based fleet visibility. I contributed as an Android/KMP engineer, working with Bluetooth-connected hardware and the synchronization layers behind the mobile experience.",
+    highlights: [
+      "Contributed to the Android/KMP mobile application connecting commercial drivers with an ELD telematics ecosystem.",
+      "Worked with Bluetooth communication to exchange data with in-cab ELD hardware.",
+      "Implemented and maintained synchronization layers responsible for keeping device and application data consistent.",
+      "Contributed to the mobile product during its transition into continued development under the engineering team.",
+    ],
+    stack: [
+      "Kotlin",
+      "Kotlin Multiplatform",
+      "Android",
+      "Bluetooth / BLE",
+      "IoT",
+      "GPS",
+    ],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=uz.udt.greenlight.eld.android",
+        platform: "android",
+      },
+    ],
+  },
+] as const;
 
 export const CONTACT = {
   email: "otamurod.safarov.jobs@gmail.com",
